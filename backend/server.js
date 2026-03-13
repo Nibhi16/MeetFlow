@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || '*';
 
-app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
+app.use(cors({ origin: '*', credentials: false }));
 app.use(express.json());
 
 app.use(attachDefaultUser);
