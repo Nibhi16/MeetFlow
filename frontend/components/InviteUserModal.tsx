@@ -30,7 +30,7 @@ export default function InviteUserModal({ open, onClose }: Props) {
   if (!open) return null;
 
   const hasEmail = emails.trim().length > 0;
-  
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!hasEmail) return;
@@ -38,7 +38,8 @@ export default function InviteUserModal({ open, onClose }: Props) {
     try {
       const emailList = emails.split(',').map(e => e.trim()).filter(Boolean);
   
-      const res = await fetch('http://localhost:4000/invite', {
+      const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
+      const res = await fetch(`${apiBase}/invite`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
