@@ -1,3 +1,4 @@
+import { type ReactElement } from 'react';
 import {
   addDays,
   format,
@@ -20,8 +21,8 @@ export default function Calendar({ selectedDate, onSelectDate }: Props) {
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
   const endDate = endOfWeek(monthEnd, { weekStartsOn: 1 });
 
-  const rows: JSX.Element[] = [];
-  let days: JSX.Element[] = [];
+  const rows: ReactElement[] = [];
+  let days: ReactElement[] = [];
   let day = startDate;
 
   while (day <= endDate) {
